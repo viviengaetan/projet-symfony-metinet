@@ -6,8 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-    public function indexAction($name)
+    public function indexAction()
     {
-        return $this->render('ShortyFirstBundle:Default:index.html.twig', array('name' => $name));
+        $view = 'ShortyFirstBundle:Default:index.html.twig';
+        return $this->render($view);
     }
 }

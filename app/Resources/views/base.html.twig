@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr-Fr">
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/bootstrap.css') }}" media="screen" />
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
