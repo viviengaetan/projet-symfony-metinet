@@ -1,0 +1,7 @@
+parameters:
+#    shorty_first.example.class: Shorty\FirstBundle\Example
+
+services:
+#    shorty_first.example:
+#        class: %shorty_first.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

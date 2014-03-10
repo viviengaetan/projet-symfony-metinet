@@ -1,0 +1,4 @@
+shorty_first:
+    resource: "@ShortyFirstBundle/Resources/config/routing.yml"
+    prefix:   /
+
