@@ -1,3 +1,8 @@
-shorty_first_homepage:
+shorty_homepage:
     pattern:  /
     defaults: { _controller: ShortyFirstBundle:Default:index }
+
+shorty_add:
+    pattern: /add
+    defaults: { _controller: ShortyFirstBundle:Default:add }
+    methods: [GET,POST]

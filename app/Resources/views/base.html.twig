@@ -7,8 +7,12 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/bootstrap.css') }}" media="screen" />
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
-        {% block body %}{% endblock %}
+    <body class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 col-md-offset-5">
+            {% block content %}{% endblock %}
+            </div>
+        </div>
         {% block javascripts %}{% endblock %}
     </body>
 </html>
