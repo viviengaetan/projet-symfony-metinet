@@ -1,0 +1,21 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block titlepage %}{{ title }}{% endblock %}
+
+{% block content %}
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>#</th>
+            <th>Lien</th>
+            <th>Slug</th>
+        </tr>
+    {% for url in urls %}
+        <tr>
+            <td>{{ url.id }}</td>
+            <td><a href="{{ path("shorty_fiche", {slug:url.slug}) }}">{{ url.lien }}</a></td>
+            <td>{{ url.slug }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

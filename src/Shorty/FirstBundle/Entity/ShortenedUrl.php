@@ -11,7 +11,12 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="shorturl")
  * @ORM\Entity
  */
-class ShortenedUrl {
+class ShortenedUrl
+{
+
+    /****************************************
+     * ATTRIBUTES
+     ****************************************/
 
     /**
      * @var integer
@@ -33,11 +38,13 @@ class ShortenedUrl {
     /**
      * ShortURL
      * @var String
-     * @ORM\Column(name="slug",type="text",nullable=false,unique=true)
+     * @ORM\Column(name="slug",type="string",length=255,nullable=false,unique=true)
      */
     private $slug;
 
-    /** GETTERS AND SETTERS**/
+    /****************************************
+     * GETTERS AND SETTERS
+     ****************************************/
 
     /**
      * @param int $id
@@ -87,9 +94,18 @@ class ShortenedUrl {
         return $this->slug;
     }
 
+    /****************************************
+     * FUNCTIONS
+     ****************************************/
+    public function generateUrl()
+    {
+        if(count($this->getSlug()) > 0) {
+            $this->setSlug(substr(sha1($this->getSlug()),0,8));
+        } else {
+            $this->setSlug(substr(sha1($this->getLien()),0,8));
+        }
+        return $this->getSlug();
+    }
 
 
-
-
-
-} 
+}

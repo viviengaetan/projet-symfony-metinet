@@ -6,3 +6,15 @@ shorty_add:
     pattern: /add
     defaults: { _controller: ShortyFirstBundle:Default:add }
     methods: [GET,POST]
+
+shorty_list:
+    pattern: /list
+    defaults: { _controller: ShortyFirstBundle:Default:list }
+
+shorty_fiche:
+    pattern: /fiche/{slug}
+    defaults: { _controller: ShortyFirstBundle:Default:fiche }
+
+shorty_redirect:
+    pattern: /{slug}
+    defaults: { _controller: ShortyFirstBundle:Default:redirect }

@@ -4,6 +4,7 @@
         <ul class="nav nav-pills nav-tabs nav-justified">
             <li {% if title == "Accueil" %}class="active"{% endif %}><a href="{{ path("shorty_homepage") }}">Accueil</a></li>
             <li {% if title == "Ajout d'un Lien" %}class="active"{% endif %}><a href="{{ path("shorty_add") }}">Crée ton Lien</a></li>
+            <li {% if title == "Liste des Liens" %}class="active"{% endif %}><a href="{{ path("shorty_list") }}">Liste des Liens</a></li>
         </ul>
     </nav>
 </header>

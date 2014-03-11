@@ -9,14 +9,14 @@
             {{ form_label(form.lien) }}
             {{ form_widget(form.lien) }}
             {% if form.lien.vars.errors is defined %}
-                {{ form_errors(form.lien) }}
+            <div class="bg-danger">{{ form_errors(form.lien) }}</div>
             {% endif %}
         </div>
         <div>
             {{ form_label(form.slug) }}
             {{ form_widget(form.slug) }}
             {% if form.slug.vars.errors is defined %}
-                {{ form_errors(form.slug) }}
+                <div class="bg-danger">{{ form_errors(form.slug) }}</div>
             {% endif %}
         </div>
         {{  form_rest(form) }}
