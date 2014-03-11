@@ -26,7 +26,7 @@ class DefaultController extends Controller
         $form = $this->createFormBuilder($shortUrl)
             ->add("lien", "text")
             ->add("slug", "text", array('required' => false))
-            ->add("ok", "submit")
+            ->add("Enregistrer", "submit")
             ->getForm();
 
         $em = $this->getDoctrine()->getManager();

@@ -1,7 +1,6 @@
 {% extends "::base.html.twig" %}
 
 {% block title %}{{ title }}{% endblock %}
-{% block titlepage %}{{ title }}{% endblock %}
 
 {% block content %}
     <div>Lien : <a href='{{ path("shorty_redirect", {slug:url.slug}) }}'>{{ url.lien }}</a></div>
