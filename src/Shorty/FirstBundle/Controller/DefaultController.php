@@ -2,6 +2,7 @@
 
 namespace Shorty\FirstBundle\Controller;
 
+use Shorty\FirstBundle\Entity\ShortenedUrl;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use \Symfony\Component\HttpFoundation\Request;
 
@@ -9,22 +10,27 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        $view = 'ShortyFirstBundle:Default:index.html.twig';
-        return $this->render($view);
+        return $this->render(
+            'ShortyFirstBundle:Default:index.html.twig',
+            array(
+                "title" => "Accueil"
+            )
+        );
     }
 
     public function addAction(Request $request)
     {
-        $form = $this->createFormBuilder()
+        $shortUrl = new ShortenedUrl();
+
+        $form = $this->createFormBuilder($shortUrl)
             ->add("lien", "text")
-            ->add("Créer", "submit")
+            ->add("slug","text")
+            ->add("ok", "submit")
             ->getForm();
 
         $form->handleRequest($request);
-        if($form->isValid()) {
-            $lien = $request->get("form")["lien"];
-        } else {
-            $lien = null;
+        if(!$form->isValid()) {
+            $shortUrl = null;
         }
 
         return $this->render(
@@ -32,7 +38,7 @@ class DefaultController extends Controller
             array(
                 "title" => "Ajout d'un Lien",
                 "form" => $form->createView(),
-                "lien" => $lien
+                "lien" => $shortUrl
             )
         );
     }

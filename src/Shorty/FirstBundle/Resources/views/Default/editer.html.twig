@@ -1,12 +1,31 @@
 {% extends "::base.html.twig" %}
 
 {% block title %}{{ title }}{% endblock %}
+{% block titlepage %}{{ title }}{% endblock %}
 
 {% block content %}
-    <h2>{{ title }}</h2>
-    {% if lien is not null %}
+    <form action="" method="post">
+        <div>
+            {{ form_label(form.lien) }}
+            {{ form_widget(form.lien) }}
+            {% if form.lien.vars.errors is defined %}
+                {{ form_errors(form.lien) }}
+            {% endif %}
+        </div>
+        <div>
+            {{ form_label(form.slug) }}
+            {{ form_widget(form.slug) }}
+            {% if form.slug.vars.errors is defined %}
+                {{ form_errors(form.slug) }}
+            {% endif %}
+        </div>
+        {{  form_rest(form) }}
+    </form>
+    {#
+    {%  if lien is not null %}
         {{ lien }}
     {% else %}
         {{ form(form) }}
     {% endif %}
+    #}
 {% endblock %}
