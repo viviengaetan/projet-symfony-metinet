@@ -94,18 +94,4 @@ class ShortenedUrl
         return $this->slug;
     }
 
-    /****************************************
-     * FUNCTIONS
-     ****************************************/
-    public function generateUrl()
-    {
-        if(count($this->getSlug()) > 0) {
-            $this->setSlug(substr(sha1($this->getSlug()),0,8));
-        } else {
-            $this->setSlug(substr(sha1($this->getLien()),0,8));
-        }
-        return $this->getSlug();
-    }
-
-
 }
