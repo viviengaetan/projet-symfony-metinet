@@ -29,7 +29,10 @@ class DefaultController extends Controller
             ->getForm();
 
         $form->handleRequest($request);
-        if(!$form->isValid()) {
+        if($form->isValid()) {
+            $this->getDoctrine()->getManager()->persist($shortUrl);
+            $this->getDoctrine()->getManager()->flush();
+        } else {
             $shortUrl = null;
         }
 
