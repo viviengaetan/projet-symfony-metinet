@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="gg_team_forum_admin" pattern="/">
+        <default key="_controller">GGTeamForumBundle:AdminCategory:index</default>
+    </route>
+    <route id="gg_team_forum_admin_listecategories" pattern="/listeCategories">
+        <default key="_controller">GGTeamForumBundle:AdminCategory:listeCategories</default>
+    </route>
+    <route id="gg_team_forum_admin_listeusers" pattern="/listeUsers">
+        <default key="_controller">GGTeamForumBundle:AdminUser:listeUsers</default>
+    </route>
+</routes>
