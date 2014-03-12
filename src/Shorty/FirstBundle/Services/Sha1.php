@@ -8,7 +8,7 @@
 
 namespace Shorty\FirstBundle\Services;
 
-class Sha1 {
+class Sha1 implements HashInterface {
     public function hash($slug) {
         return substr(sha1($slug),0,8);
     }
