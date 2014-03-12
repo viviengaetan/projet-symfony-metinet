@@ -25,7 +25,7 @@ class AdminCategoryController extends Controller{
     }
 
     public function addCategoryAction() {
-
+        return $this->redirect($this->generateUrl("gg_team_forum_admin_listecategories"));
     }
 
     public function updateCategoryAction() {
