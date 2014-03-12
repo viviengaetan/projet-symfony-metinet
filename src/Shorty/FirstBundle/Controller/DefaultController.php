@@ -34,7 +34,7 @@ class DefaultController extends Controller
         if ($form->isValid()) {
             /** Check if slug exist and is set **/
             $slugGenerator = $this->get("shorty_first.slug_generator");
-            while ( strlen($shortUrl->getSlug()) == 0 && !$em->getRepository("ShortyFirstBundle:ShortenedUrl")->findOneBy(array("slug" => $shortUrl->getSlug())) ) {
+            while ( strlen($shortUrl->getSlug()) == 0 || $em->getRepository("ShortyFirstBundle:ShortenedUrl")->findOneBy(array("slug" => $shortUrl->getSlug())) ) {
                 if($shortUrl->getSlug()) {
                     $shortUrl->setSlug($slugGenerator->generateSlug($shortUrl->getSlug()));
                 } else {

@@ -3,6 +3,6 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-    <div>Lien : <a href='{{ path("shorty_redirect", {slug:url.slug}) }}'>{{ url.lien }}</a></div>
+    <div>Lien : <a href='{{ path("shorty_redirect", {slug:url.slug}) }}' target="_blank">{{ url.lien }}</a></div>
     <div>Slug : {{ url.slug }}</div>
 {% endblock %}

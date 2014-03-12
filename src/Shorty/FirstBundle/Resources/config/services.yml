@@ -1,5 +1,5 @@
 parameters:
-    shorty_first.slug_generator.class: Shorty\FirstBundle\Services\SlugGenerator
+    shorty_first.slug_generator.class: Shorty\FirstBundle\Services\HashSlugGenerator
     shorty_first.sha1.class: Shorty\FirstBundle\Services\Sha1
 
 services:

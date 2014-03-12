@@ -8,14 +8,14 @@
 
 namespace Shorty\FirstBundle\Services;
 
-class SlugGenerator implements SlugGeneratorInterface{
+class HashSlugGenerator implements SlugGeneratorInterface{
 
     private $sha1;
 
     /**
-     * @param Sha1 $sha1
+     * @param HashInterface $sha1
      */
-    public function __construct($sha1) {
+    public function __construct(HashInterface $sha1) {
         $this->sha1 = $sha1;
     }
 
