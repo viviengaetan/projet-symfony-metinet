@@ -6,6 +6,7 @@
     <route id="gg_team_forum_homepage" pattern="/hello/{name}">
         <default key="_controller">GGTeamForumBundle:Default:index</default>
     </route>
+    <import resource="@GGTeamForumBundle/Resources/config/routing_admin.xml" prefix="/admin"/>
     <import resource="@FOSUserBundle/Resources/config/routing/security.xml"/>
     <import resource="@FOSUserBundle/Resources/config/routing/profile.xml" prefix="/profile" />
     <import resource="@FOSUserBundle/Resources/config/routing/registration.xml" prefix="/register" />

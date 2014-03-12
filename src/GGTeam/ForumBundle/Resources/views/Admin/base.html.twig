@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr-Fr">
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/bootstrap.css') }}" media="screen" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body class="container-fluid" style="background-color: #eee">
+<div class="row">
+    <div class="col-md-8 col-md-offset-2" style="background-color: #fff">
+        {% include "GGTeamForumBundle::Admin/header.html.twig" %}
+        {% block content %}{% endblock %}
+    </div>
+</div>
+{% block javascripts %}{% endblock %}
+</body>
+</html>
