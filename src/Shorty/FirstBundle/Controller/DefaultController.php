@@ -15,7 +15,7 @@ class DefaultController extends Controller
         return $this->render(
             'ShortyFirstBundle:Default:index.html.twig',
             array(
-                "title" => "Accueil"
+                "title" => $this->get('translator')->trans("title.home")
             )
         );
     }
@@ -26,9 +26,9 @@ class DefaultController extends Controller
         $shortUrl = new ShortenedUrl();
 
         $form = $this->createFormBuilder($shortUrl)
-            ->add("lien", "text")
-            ->add("slug", "text", array('required' => false))
-            ->add("Enregistrer", "submit")
+            ->add("lien", "text", array('label' => $this->get('translator')->trans("global.lien")))
+            ->add("slug", "text", array('required' => false, 'label' => $this->get('translator')->trans("global.slug")))
+            ->add("Enregistrer", "submit", array('label' => $this->get('translator')->trans("global.save")))
             ->getForm();
 
         $form->handleRequest($request);
@@ -60,7 +60,7 @@ class DefaultController extends Controller
         return $this->render(
             "ShortyFirstBundle:Default:editer.html.twig",
             array(
-                "title" => "Ajout d'un Lien",
+                "title" => $this->get('translator')->trans("title.lien.add"),
                 "form" => $form->createView(),
                 "shorturl" => null,
                 "listshorturl" => $listShortUrl
@@ -75,7 +75,7 @@ class DefaultController extends Controller
         return $this->render(
             "ShortyFirstBundle:Default:list.html.twig",
             array(
-                "title" => "Liste des Liens",
+                "title" => $this->get('translator')->trans("title.lien.list"),
                 "urls" => $urls
             )
         );
@@ -87,7 +87,7 @@ class DefaultController extends Controller
         return $this->render(
             "ShortyFirstBundle:Default:fiche.html.twig",
             array(
-                "title" => "Fiche d'un Lien",
+                "title" => $this->get('translator')->trans("title.lien.fiche"),
                 "url" => $url
             )
         );

@@ -1,34 +1,34 @@
 <?xml version="1.0"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="fr" datatype="plaintext" original="file.ext">
+    <file source-language="en" datatype="plaintext" original="file.ext">
         <body>
             <trans-unit id="1">
                 <source>title.home</source>
-                <target>Accueil</target>
+                <target>Home</target>
             </trans-unit>
             <trans-unit id="2">
                 <source>title.lien.add</source>
-                <target>Ajout d'un Lien</target>
+                <target>Addition of a link</target>
             </trans-unit>
             <trans-unit id="3">
                 <source>title.lien.list</source>
-                <target>Liste des Liens</target>
+                <target>Links List</target>
             </trans-unit>
             <trans-unit id="4">
                 <source>title.lien.fiche</source>
-                <target>Fiche d'un Lien</target>
+                <target>Link page</target>
             </trans-unit>
             <trans-unit id="5">
                 <source>global.lien</source>
-                <target>Lien</target>
+                <target>Link</target>
             </trans-unit>
             <trans-unit id="6">
                 <source>global.slug</source>
-                <target>Clé</target>
+                <target>Slug</target>
             </trans-unit>
             <trans-unit id="7">
                 <source>global.save</source>
-                <target>Enregistrer</target>
+                <target>Save</target>
             </trans-unit>
             <trans-unit id="8">
                 <source>app.name</source>
@@ -36,11 +36,11 @@
             </trans-unit>
             <trans-unit id="9">
                 <source>title.lien.create</source>
-                <target>Créé ton Lien</target>
+                <target>Create your link</target>
             </trans-unit>
             <trans-unit id="10">
                 <source>global.nbr.click</source>
-                <target>Nombre de cliques</target>
+                <target>Number of clicks</target>
             </trans-unit>
         </body>
     </file>

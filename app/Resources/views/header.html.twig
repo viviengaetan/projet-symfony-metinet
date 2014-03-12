@@ -1,10 +1,11 @@
 <header>
-    <h1>ShortyUrl</h1>
+    <h1>{% trans %}app.name{% endtrans %}</h1>
     <nav>
+        {% set currentPath = path(app.request.attributes.get('_route')) %}
         <ul class="nav nav-pills nav-tabs nav-justified">
-            <li {% if title == "Accueil" %}class="active"{% endif %}><a href="{{ path("shorty_homepage") }}">Accueil</a></li>
-            <li {% if title == "Ajout d'un Lien" %}class="active"{% endif %}><a href="{{ path("shorty_add") }}">Crée ton Lien</a></li>
-            <li {% if title == "Liste des Liens" %}class="active"{% endif %}><a href="{{ path("shorty_list") }}">Liste des Liens</a></li>
+            <li {% if currentPath == path("shorty_homepage") %}class="active"{% endif %}><a href="{{ path("shorty_homepage") }}">{% trans %}title.home{% endtrans %}</a></li>
+            <li {% if currentPath == path("shorty_add") %}class="active"{% endif %}><a href="{{ path("shorty_add") }}">{% trans %}title.lien.create{% endtrans %}</a></li>
+            <li {% if currentPath == path("shorty_list") %}class="active"{% endif %}><a href="{{ path("shorty_list") }}">{% trans %}title.lien.list{% endtrans %}</a></li>
         </ul>
     </nav>
 </header>

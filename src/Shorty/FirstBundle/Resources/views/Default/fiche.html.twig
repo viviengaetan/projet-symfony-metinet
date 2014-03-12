@@ -7,9 +7,9 @@
         <div class="col-md-4">
             <h4>Informations Lien</h4>
 
-            <div>Lien : <a href='{{ path("shorty_redirect", {slug:url.slug}) }}' target="_blank">{{ url.lien }}</a>
+            <div>{% trans %}global.lien{% endtrans %} : <a href='{{ path("shorty_redirect", {slug:url.slug}) }}' target="_blank">{{ url.lien }}</a>
             </div>
-            <div>Slug : {{ url.slug }}</div>
+            <div>{% trans %}global.slug{% endtrans %} : {{ url.slug }}</div>
         </div>
         <div class="col-md-8">
             <h4>Les Derniers 10 Cliques</h4>
