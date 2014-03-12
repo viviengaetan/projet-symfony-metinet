@@ -3,21 +3,34 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-    <form action="" method="post">
-        <div>
-            {{ form_label(form.lien) }}
-            {{ form_widget(form.lien) }}
-            {% if form.lien.vars.errors is defined %}
-            <div class="bg-danger">{{ form_errors(form.lien) }}</div>
-            {% endif %}
+    <div class="row">
+        <div class="col-md-6 col-md-offset-1">
+            <h4>Création d'un Nouveau Lien</h4>
+            <form action="" method="post">
+                <div>
+                    {{ form_label(form.lien) }}
+                    {{ form_widget(form.lien) }}
+                    {% if form.lien.vars.errors is defined %}
+                        <div class="bg-danger">{{ form_errors(form.lien) }}</div>
+                    {% endif %}
+                </div>
+                <div>
+                    {{ form_label(form.slug) }}
+                    {{ form_widget(form.slug) }}
+                    {% if form.slug.vars.errors is defined %}
+                        <div class="bg-danger">{{ form_errors(form.slug) }}</div>
+                    {% endif %}
+                </div>
+                {{  form_rest(form) }}
+            </form>
         </div>
-        <div>
-            {{ form_label(form.slug) }}
-            {{ form_widget(form.slug) }}
-            {% if form.slug.vars.errors is defined %}
-                <div class="bg-danger">{{ form_errors(form.slug) }}</div>
-            {% endif %}
+        <div class="col-md-5">
+            <h4>Les 10 Derniers Liens Créés</h4>
+            <ul>
+                {% for url in listshorturl|slice(0,10) %}
+                    <li><a href="{{ path("shorty_redirect", {slug:url.slug}) }}" target="_blank">{{ url.slug }}</a></li>
+                {% endfor %}
+            </ul>
         </div>
-        {{  form_rest(form) }}
-    </form>
+    </div>
 {% endblock %}

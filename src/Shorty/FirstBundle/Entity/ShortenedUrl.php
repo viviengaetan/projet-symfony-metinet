@@ -2,6 +2,7 @@
 
 namespace Shorty\FirstBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -41,6 +42,28 @@ class ShortenedUrl
      * @ORM\Column(name="slug",type="string",length=255,nullable=false,unique=true)
      */
     private $slug;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(name="dateCreation",type="datetime",nullable=false)
+     */
+    private $dateCreation;
+
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="Shorty\FirstBundle\Entity\ClickUrl",mappedBy="shortenedUrl")
+     * @ORM\OrderBy({"time" = "DESC"})
+     */
+    private $clicks;
+
+    /****************************************
+     * CONSTRUCTORS
+     ****************************************/
+
+    public function __construct() {
+        $this->dateCreation = new \DateTime();
+        $this->clicks = new ArrayCollection();
+    }
 
     /****************************************
      * GETTERS AND SETTERS
@@ -93,5 +116,44 @@ class ShortenedUrl
     {
         return $this->slug;
     }
+
+    /**
+     * @param \Doctrine\Common\Collections\ArrayCollection $clicks
+     */
+    public function setClicks($clicks)
+    {
+        $this->clicks = $clicks;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getClicks()
+    {
+        return $this->clicks;
+    }
+
+    /**
+     * @param \DateTime $dateCreation
+     */
+    public function setDateCreation($dateCreation)
+    {
+        $this->dateCreation = $dateCreation;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateCreation()
+    {
+        return $this->dateCreation;
+    }
+
+
+    /****************************************
+     * FUNCTIONS
+     ****************************************/
+
+
 
 }

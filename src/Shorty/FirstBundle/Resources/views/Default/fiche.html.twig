@@ -3,6 +3,28 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-    <div>Lien : <a href='{{ path("shorty_redirect", {slug:url.slug}) }}' target="_blank">{{ url.lien }}</a></div>
-    <div>Slug : {{ url.slug }}</div>
+    <div class="row">
+        <div class="col-md-4">
+            <h4>Informations Lien</h4>
+
+            <div>Lien : <a href='{{ path("shorty_redirect", {slug:url.slug}) }}' target="_blank">{{ url.lien }}</a>
+            </div>
+            <div>Slug : {{ url.slug }}</div>
+        </div>
+        <div class="col-md-8">
+            <h4>Les Derniers 10 Cliques</h4>
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <th>Date</th>
+                    <th>Provenance</th>
+                </tr>
+                {% for click in url.clicks|slice(0,10) %}
+                    <tr>
+                        <td>{{ click.time|date("H:i:s d/m/Y") }}</td>
+                        <td>{{ click.precedentUrl }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
 {% endblock %}

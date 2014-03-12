@@ -9,12 +9,14 @@
             <th>#</th>
             <th>Lien</th>
             <th>Slug</th>
+            <th>Nombre de Cliques</th>
         </tr>
     {% for url in urls %}
         <tr>
             <td>{{ url.id }}</td>
             <td><a href="{{ path("shorty_fiche", {slug:url.slug}) }}">{{ url.lien }}</a></td>
-            <td>{{ url.slug }}</td>
+            <td><a href="{{ path("shorty_redirect", {slug:url.slug}) }}" target="_blank">{{ url.slug }}</a></td>
+            <td>{{ url.clicks|length }}</td>
         </tr>
     {% endfor %}
     </table>
