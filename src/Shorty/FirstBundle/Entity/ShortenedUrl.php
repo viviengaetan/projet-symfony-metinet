@@ -30,7 +30,7 @@ class ShortenedUrl
     /**
      * OriginURL
      * @var String
-     * @ORM\Column(name="lien",type="text",nullable=false)
+     * @ORM\Column(name="lien", type="text", nullable=false)
      * @Assert\NotBlank(message="Ne peut pas être Vide")
      * @Assert\Url(message="Cette Url n'est pas Valide")
      */
@@ -39,19 +39,19 @@ class ShortenedUrl
     /**
      * ShortURL
      * @var String
-     * @ORM\Column(name="slug",type="string",length=255,nullable=false,unique=true)
+     * @ORM\Column(name="slug", type="string", length=255, nullable=false, unique=true)
      */
     private $slug;
 
     /**
      * @var \DateTime
-     * @ORM\Column(name="dateCreation",type="datetime",nullable=false)
+     * @ORM\Column(name="dateCreation", type="datetime", nullable=false)
      */
     private $dateCreation;
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="Shorty\FirstBundle\Entity\ClickUrl",mappedBy="shortenedUrl")
+     * @ORM\OneToMany(targetEntity="Shorty\FirstBundle\Entity\ClickUrl", mappedBy="shortenedUrl")
      * @ORM\OrderBy({"time" = "DESC"})
      */
     private $clicks;

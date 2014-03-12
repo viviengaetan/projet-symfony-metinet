@@ -1,11 +1,11 @@
 <header>
     <h1>{% trans %}app.name{% endtrans %}</h1>
     <nav>
-        {% set currentPath = path(app.request.attributes.get('_route')) %}
+        {% set currentPath = app.request.attributes.get('_route') %}
         <ul class="nav nav-pills nav-tabs nav-justified">
-            <li {% if currentPath == path("shorty_homepage") %}class="active"{% endif %}><a href="{{ path("shorty_homepage") }}">{% trans %}title.home{% endtrans %}</a></li>
-            <li {% if currentPath == path("shorty_add") %}class="active"{% endif %}><a href="{{ path("shorty_add") }}">{% trans %}title.lien.create{% endtrans %}</a></li>
-            <li {% if currentPath == path("shorty_list") %}class="active"{% endif %}><a href="{{ path("shorty_list") }}">{% trans %}title.lien.list{% endtrans %}</a></li>
+            <li {% if currentPath == "shorty_homepage" %}class="active"{% endif %}><a href="{{ path("shorty_homepage") }}">{% trans %}title.home{% endtrans %}</a></li>
+            <li {% if currentPath == "shorty_add" %}class="active"{% endif %}><a href="{{ path("shorty_add") }}">{% trans %}title.lien.create{% endtrans %}</a></li>
+            <li {% if currentPath == "shorty_list" %}class="active"{% endif %}><a href="{{ path("shorty_list") }}">{% trans %}title.lien.list{% endtrans %}</a></li>
         </ul>
     </nav>
 </header>

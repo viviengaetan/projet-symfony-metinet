@@ -28,26 +28,26 @@ class ClickUrl
     /**
      * @var integer
      * @ORM\Id
-     * @ORM\Column(name="id",type="integer",nullable=false)
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var \DateTime
-     * @ORM\Column(name="time",type="datetime",nullable=false)
+     * @ORM\Column(name="time", type="datetime", nullable=false)
      */
     private $time;
 
     /**
      * @var
-     * @ORM\Column(name="precedenturl",type="text",nullable=true)
+     * @ORM\Column(name="precedenturl", type="text", nullable=true)
      */
     private $precedentUrl;
 
     /**
      * @var ShortenedUrl
-     * @ORM\ManyToOne(targetEntity="Shorty\FirstBundle\Entity\ShortenedUrl")
+     * @ORM\ManyToOne(targetEntity="Shorty\FirstBundle\Entity\ShortenedUrl", inversedBy="clicks")
      * @ORM\JoinColumns({
      *  @ORM\JoinColumn(name="id_shorturl", referencedColumnName="id", onDelete="CASCADE")
      * })
