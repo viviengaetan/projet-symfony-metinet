@@ -64,7 +64,7 @@ class Forum
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="GGTeam\ForumBundle\Entity\User", mappedBy="forum")
+     * @ORM\OneToMany(targetEntity="GGTeam\ForumBundle\Entity\Message", mappedBy="forum")
      */
     private $messages;
 
@@ -77,7 +77,7 @@ class Forum
 
     /**
      * @var \GGTeam\ForumBundle\Entity\Category
-     * @ORM\ManyToOne(targetEntity="GGTeam\ForumBundle\Entity\Category")
+     * @ORM\ManyToOne(targetEntity="GGTeam\ForumBundle\Entity\Category", inversedBy="forums")
      * @ORM\JoinColumns({
      *  @ORM\JoinColumn(name="id_category", referencedColumnName="id", onDelete="CASCADE")
      * })

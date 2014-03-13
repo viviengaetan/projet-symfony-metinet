@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Class Category
  * @package GGTeam\ForumBundle\Entity
  * @ORM\Table(name="category")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="\GGTeam\ForumBundle\Repository\Category")
  */
 class Category
 {
@@ -40,7 +40,7 @@ class Category
 
     /**
      * @var \GGTeam\ForumBundle\Entity\Category
-     * @ORM\ManyToOne(targetEntity="GGTeam\ForumBundle\Entity\Category")
+     * @ORM\ManyToOne(targetEntity="GGTeam\ForumBundle\Entity\Category", inversedBy="categories")
      * @ORM\JoinColumns({
      *  @ORM\JoinColumn(name="parent", referencedColumnName="id", onDelete="CASCADE")
      * })
@@ -49,13 +49,13 @@ class Category
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="GGTeam\ForumBundle\Entity\Category",mappedBy="parent")
+     * @ORM\OneToMany(targetEntity="GGTeam\ForumBundle\Entity\Category", mappedBy="parent")
      */
     private $categories;
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="GGTeam\ForumBundle\Entity\Forum",mappedBy="category")
+     * @ORM\OneToMany(targetEntity="GGTeam\ForumBundle\Entity\Forum", mappedBy="category")
      */
     private $forums;
 

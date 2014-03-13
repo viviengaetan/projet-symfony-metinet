@@ -58,7 +58,7 @@ class Message
 
     /**
      * @var \GGTeam\ForumBundle\Entity\Forum
-     * @ORM\ManyToOne(targetEntity="GGTeam\ForumBundle\Entity\Forum")
+     * @ORM\ManyToOne(targetEntity="GGTeam\ForumBundle\Entity\Forum", inversedBy="messages")
      * @ORM\JoinColumns({
      *  @ORM\JoinColumn(name="id_forum", referencedColumnName="id", onDelete="CASCADE")
      * })
