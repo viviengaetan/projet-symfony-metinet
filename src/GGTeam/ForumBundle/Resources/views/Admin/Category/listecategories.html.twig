@@ -1,12 +1,16 @@
 {% extends "GGTeamForumBundle::Admin/base.html.twig" %}
 
 {% block content %}
-    <ul>
+    <div class="row">
     {% for category in categories %}
-        <li>{{ category.name }}</li>
+        <div class="col-md-12">
+            <h3><a href="{{ path("gg_team_forum_admin_updatecategory", {idcategory:category.id}) }}">{{ category.name }}</a></h3>
+            <p>{{ category.description }}</p>
+        </div>
+        {% include "GGTeamForumBundle:Admin/Category:listecategories.template.html.twig" with {'categories': category.categories, "lvl": 11} %}
     {% else %}
-        <li>Il n'y a pas de Catégories.</li>
+    <div class="col-md-12">Il n'y a pas de Catégories.</div>
     {% endfor %}
-    </ul>
+    </div>
     <a href="{{ path("gg_team_forum_admin_addcategory") }}" class="btn btn-default btn-lg active" role="button">Ajouter une Catégorie</a>
 {% endblock %}

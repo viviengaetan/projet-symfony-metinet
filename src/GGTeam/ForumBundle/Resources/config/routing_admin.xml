@@ -7,12 +7,18 @@
     <route id="gg_team_forum_admin" pattern="/">
         <default key="_controller">GGTeamForumBundle:AdminCategory:index</default>
     </route>
+    <!-- CATEGORIES -->
     <route id="gg_team_forum_admin_listecategories" pattern="/listeCategories">
         <default key="_controller">GGTeamForumBundle:AdminCategory:listeCategories</default>
     </route>
     <route id="gg_team_forum_admin_addcategory" pattern="/addCategory">
         <default key="_controller">GGTeamForumBundle:AdminCategory:addCategory</default>
     </route>
+    <route id="gg_team_forum_admin_updatecategory" pattern="/updateCategory/{idcategory}">
+        <default key="_controller">GGTeamForumBundle:AdminCategory:updateCategory</default>
+    </route>
+
+    <!-- USERS -->
     <route id="gg_team_forum_admin_listeusers" pattern="/listeUsers">
         <default key="_controller">GGTeamForumBundle:AdminUser:listeUsers</default>
     </route>

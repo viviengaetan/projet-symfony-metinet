@@ -1,11 +1,11 @@
 <header>
     <h1>GGTeam::MonBundleForum</h1>
     <nav>
-        {% set currentPath = path(app.request.attributes.get('_route')) %}
+        {% set currentPath = app.request.attributes.get('_route') %}
         <ul class="nav nav-pills nav-tabs nav-justified">
-            <li {% if currentPath == path("gg_team_forum_admin") %}class="active"{% endif %}><a href="{{ path("gg_team_forum_admin") }}">Accueil</a></li>
-            <li {% if currentPath == path("gg_team_forum_admin_listecategories") %}class="active"{% endif %}><a href="{{ path("gg_team_forum_admin_listecategories") }}">Catégories</a></li>
-            <li {% if currentPath == path("gg_team_forum_admin_listeusers") %}class="active"{% endif %}><a href="{{ path("gg_team_forum_admin_listeusers") }}">Utilisateurs</a></li>
+            <li {% if currentPath == "gg_team_forum_admin" %}class="active"{% endif %}><a href="{{ path("gg_team_forum_admin") }}">Accueil</a></li>
+            <li {% if currentPath == "gg_team_forum_admin_listecategories" %}class="active"{% endif %}><a href="{{ path("gg_team_forum_admin_listecategories") }}">Catégories</a></li>
+            <li {% if currentPath == "gg_team_forum_admin_listeusers" %}class="active"{% endif %}><a href="{{ path("gg_team_forum_admin_listeusers") }}">Utilisateurs</a></li>
         </ul>
     </nav>
 </header>

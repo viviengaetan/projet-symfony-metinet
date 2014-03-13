@@ -1,0 +1,7 @@
+{% for category in categories %}
+    <div class="col-md-{{ lvl }} col-md-offset-{{ 12 - lvl}}">
+        <h3><a href="{{ path("gg_team_forum_admin_updatecategory", {idcategory:category.id}) }}">{{ category.name }}</a></h3>
+        <p>{{ category.description }}</p>
+    </div>
+    {% include "GGTeamForumBundle:Admin/Category:listecategories.template.html.twig" with {'categories': category.categories, "lvl": lvl-1} %}
+{% endfor %}
