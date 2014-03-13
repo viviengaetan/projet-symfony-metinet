@@ -59,6 +59,12 @@ class Category
      */
     private $forums;
 
+    /**
+     * @var
+     * @ORM\Column(name="order",type="integer",nullable=false)
+     */
+    private $order;
+
     /****************************************
      * CONSTRUCTORS
      ****************************************/

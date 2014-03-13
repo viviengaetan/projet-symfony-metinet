@@ -1,7 +1,12 @@
 {% for category in categories %}
-    <div class="col-md-{{ lvl }} col-md-offset-{{ 12 - lvl}}">
-        <h3><a href="{{ path("gg_team_forum_admin_updatecategory", {idcategory:category.id}) }}">{{ category.name }}</a></h3>
-        <p>{{ category.description }}</p>
+    <div class="row">
+        <a href="{{ path("gg_team_forum_admin_updatecategory", {idcategory:category.id}) }}">
+            <div class="col-md-4 col-md-offset-{{ 12 - (lvl - 2) }} btn btn-default">
+                <h3>{{ category.name }}</h3>
+
+                <p>{{ category.description }}</p>
+            </div>
+        </a>
     </div>
     {% include "GGTeamForumBundle:Admin/Category:listecategories.template.html.twig" with {'categories': category.categories, "lvl": lvl-1} %}
 {% endfor %}

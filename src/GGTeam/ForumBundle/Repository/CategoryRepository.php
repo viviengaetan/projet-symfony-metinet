@@ -17,7 +17,8 @@ class CategoryRepository extends EntityRepository{
         return $this->_em->createQueryBuilder()
             ->select("c")
             ->from("GGTeamForumBundle:Category", "c")
-            ->where("c.parent IS NULL");
+            ->where("c.parent IS NULL")
+            ->orderBy("c.order","ASC");
     }
 
     public function getAllCategory()
@@ -33,6 +34,7 @@ class CategoryRepository extends EntityRepository{
             ->select("c")
             ->from("GGTeamForumBundle:Category", "c")
             ->where("c.parent = :parentId")
+            ->orderBy("c.order","ASC")
             ->setParameter("parentId", $parentId);
     }
 
@@ -41,27 +43,28 @@ class CategoryRepository extends EntityRepository{
         $request = $this->_em->createQueryBuilder()
             ->select("c")
             ->from("GGTeamForumBundle:Category", "c")
-            ->where("c.id != :id")
-            ->orWhere("c.parent is null");
+            ->where("c.id != :id");
         foreach($allDeniedCategories as $cat) {
             $request->andWhere("c.id != :id".$cat->getId());
             $request->setParameter("id".$cat->getId(), $cat->getId());
 
         }
-        $request->setParameter("id", $id);
+        $request
+            ->orderBy("c.order","ASC")
+            ->setParameter("id", $id);
         return $request;
     }
 
     private function getAllChild($id) {
         $categories = $this->getSubCategories($id)->getQuery()->getResult();
-        $allcategories = $categories;
+        $allCategories = $categories;
         foreach($categories as $category) {
-            $retour = $this->getAllChild($category->getId());
-            foreach($retour as $cat) {
-                $allcategories[] = $cat;
+            $return = $this->getAllChild($category->getId());
+            foreach($return as $cat) {
+                $allCategories[] = $cat;
             }
         }
-        return $allcategories;
+        return $allCategories;
     }
 
 } 
