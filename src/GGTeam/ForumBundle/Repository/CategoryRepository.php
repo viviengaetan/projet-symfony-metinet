@@ -9,6 +9,7 @@
 namespace GGTeam\ForumBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use GGTeam\ForumBundle\Entity\Category;
 
 class CategoryRepository extends EntityRepository{
 
@@ -65,6 +66,21 @@ class CategoryRepository extends EntityRepository{
             }
         }
         return $allCategories;
+    }
+
+    public function saveNewCategory(Category $category) {
+        $catmaxorder = $this->_em->createQueryBuilder()
+            ->select("c, MAX(c.order)")
+            ->from("GGTeamForumBundle:Category", "c")
+            ->where("c.parent = :id")
+            ->setParameter("id", $category->getId())
+            ->getQuery()
+            ->getResult();
+        var_dump($catmaxorder);
+        if(!$catmaxorder[0][0]) { $catmaxorder = 0; }
+        $category->setOrder($catmaxorder+1);
+        $this->_em->persist($category);
+        $this->_em->flush();
     }
 
 } 

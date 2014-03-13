@@ -3,6 +3,7 @@
 namespace GGTeam\ForumBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
+use GGTeam\ForumBundle\Entity\Category;
 
 class CategoryManager extends BaseManager{
 
@@ -25,5 +26,10 @@ class CategoryManager extends BaseManager{
     public function getSubCategories($parentId)
     {
         return $this->repository->getSubCategories($parentId)->getQuery()->getResult();
+    }
+
+    public function setNewCategory(Category $category)
+    {
+        return $this->repository->saveNewCategory($category);
     }
 } 

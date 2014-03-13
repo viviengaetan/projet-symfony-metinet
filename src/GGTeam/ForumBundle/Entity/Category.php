@@ -33,7 +33,7 @@ class Category
     private $name;
 
     /**
-     * @var
+     * @var \String
      * @ORM\Column(name="description",type="text",nullable=false)
      */
     private $description;
@@ -60,8 +60,8 @@ class Category
     private $forums;
 
     /**
-     * @var
-     * @ORM\Column(name="order",type="integer",nullable=false)
+     * @var Integer
+     * @ORM\Column(name="ordre",type="integer",nullable=false)
      */
     private $order;
 
@@ -174,6 +174,23 @@ class Category
     {
         return $this->parent;
     }
+
+    /**
+     * @param mixed $order
+     */
+    public function setOrder($order)
+    {
+        $this->order = $order;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
+
 
     /****************************************
      * FUNCTIONS
