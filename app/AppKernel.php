@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Shorty\FirstBundle\ShortyFirstBundle(),
             new GGTeam\ForumBundle\GGTeamForumBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
