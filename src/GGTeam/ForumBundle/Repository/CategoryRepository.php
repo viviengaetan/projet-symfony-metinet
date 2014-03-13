@@ -22,4 +22,10 @@ class CategoryRepository extends EntityRepository{
             ->getQuery()
             ->getResult();
     }
+
+    public function getAllCategory() {
+        return $this->_em->createQueryBuilder()
+            ->select("c")
+            ->from("GGTeamForumBundle:Category", "c");
+    }
 } 
