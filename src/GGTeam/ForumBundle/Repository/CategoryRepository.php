@@ -18,14 +18,22 @@ class CategoryRepository extends EntityRepository{
         return $this->_em->createQueryBuilder()
             ->select("c")
             ->from("GGTeamForumBundle:Category", "c")
-            ->where("c.parent IS NULL")
-            ->getQuery()
-            ->getResult();
+            ->where("c.parent IS NULL");
     }
 
-    public function getAllCategory() {
+    public function getAllCategory()
+    {
         return $this->_em->createQueryBuilder()
             ->select("c")
             ->from("GGTeamForumBundle:Category", "c");
+    }
+
+    public function getSubCategories($parentId)
+    {
+        return $this->_em->createQueryBuilder()
+            ->select("c")
+            ->from("GGTeamForumBundle:Category", "c")
+            ->where("c.parent = :parentId")
+            ->setParameter("parentId", $parentId);
     }
 } 
