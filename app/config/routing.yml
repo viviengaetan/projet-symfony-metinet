@@ -1,10 +1,10 @@
 gg_team_forum:
     resource: "@GGTeamForumBundle/Resources/config/routing.xml"
-    prefix:   /forum/
-
-shorty_first:
-    resource: "@ShortyFirstBundle/Resources/config/routing.yml"
     prefix:   /
+
+#shorty_first:
+#    resource: "@ShortyFirstBundle/Resources/config/routing.yml"
+#    prefix:   /
 
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
