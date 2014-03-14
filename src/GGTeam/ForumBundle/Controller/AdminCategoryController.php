@@ -38,15 +38,12 @@ class AdminCategoryController extends Controller
 
         $form = $this->createFormBuilder($category)
             ->add("name", "text", array('label' => "Nom"))
-            ->add("description", "textarea", array('required' => true, 'label' => "Description"))
-            ->add("parent", "entity", array(
-                "required" => false,
-                "label" => "Catégorie Parent",
-                "class" => "GGTeamForumBundle:Category",
-                "property" => "name",
-                'query_builder' => function (CategoryRepository $er) {
-                        return $er->getAllCategory();
-                    },
+            ->add("description", "textarea", array(
+                'label' => "Description",
+                'attr' => array(
+                    'class' => 'tinymce',
+                    'data-theme' => 'bbcode'
+                )
             ))
             ->add("Enregistrer", "submit", array('label' => $this->get('translator')->trans("global.save")))
             ->getForm();
@@ -70,15 +67,13 @@ class AdminCategoryController extends Controller
 
         $form = $this->createFormBuilder($category)
             ->add("name", "text", array('label' => "Nom"))
-            ->add("description", "text", array('required' => true, 'label' => "Description"))
-            ->add("parent", "entity", array(
-                "required" => false,
-                "label" => "Catégorie Parent",
-                "class" => "GGTeamForumBundle:Category",
-                "property" => "name",
-                'query_builder' => function (CategoryRepository $er) use ($category) {
-                        return $er->getParentPossible($category->getId());
-                    },
+            ->add("description", "textarea", array(
+                'required' => true,
+                'label' => "Description",
+                'attr' => array(
+                    'class' => 'tinymce',
+                    'data-theme' => 'bbcode'
+                )
             ))
             ->add("Enregistrer", "submit", array('label' => $this->get('translator')->trans("global.save")))
             ->getForm();
@@ -95,9 +90,16 @@ class AdminCategoryController extends Controller
         }
     }
 
-    public function removeCategoryAction()
+    public function removeCategoryAction($idcategory)
     {
-
+        $em = $this->getDoctrine()->getManager();
+        $category = $em->getRepository("GGTeamForumBundle:Category")->find($idcategory);
+        if ($category->getCategories()->count() == 0) {
+            $em->remove($category);
+            $em->flush();
+            return new Response(json_encode(array("success" => 1, "msg" => "la Catégorie a bien été supprimée.")));
+        }
+        return new Response(json_encode(array("success" => 0, "msg" => "Impossible de supprimer la Catégorie.")));
     }
 
     public function saveCategoriesAction(Request $request)
@@ -105,8 +107,9 @@ class AdminCategoryController extends Controller
         if ($request->isXmlHttpRequest()) {
             $data = $request->get("data");
             $this->saveRecursive($data, null);
-            return new Response(json_encode(array("success" => "ok", "data" => $request->get("data"))));
+            return new Response(json_encode(array("success" => 1, "msg" => "Les Catégories ont bien été enregistrées.")));
         }
+        return new Response(json_encode(array("success" => 0, "msg" => "Les Catégories n'ont pas pus être enregistrées.")));
     }
 
     private function saveRecursive($data, $parent)
@@ -115,14 +118,16 @@ class AdminCategoryController extends Controller
         $i = 1;
         foreach ($data as $value) {
             $category = $em->getRepository("GGTeamForumBundle:Category")->find($value["id"]);
-            $category->setParent($parent);
-            $category->setOrder($i);
-            $em->persist($category);
-            $em->flush();
-            if (isset($value["children"])) {
-                $this->saveRecursive($value["children"], $category);
+            if ($category) {
+                $category->setParent($parent);
+                $category->setOrder($i);
+                $em->persist($category);
+                $em->flush();
+                if (isset($value["children"])) {
+                    $this->saveRecursive($value["children"], $category);
+                }
+                $i++;
             }
-            $i++;
         }
     }
 

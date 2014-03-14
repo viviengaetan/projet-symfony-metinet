@@ -9,13 +9,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('bundles/ggteamforum/css/style.css') }}" media="screen" />
     <link rel="stylesheet" type="text/css" href="{{ asset('bundles/ggteamforum/css/style_forum_admin.css') }}" media="screen" />
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    <script type="text/javascript" src="{{ asset("bundles/fosjsrouting/js/router.js") }}"></script>
-    <script type="text/javascript" src="{{ path("fos_js_routing_js", {"callback":"fos.Router.setData"}) }}"></script>
-    <script type="text/javascript" src="{{ asset("js/jQuery.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("js/jQuery-ui.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("js/jQuery.sortable.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("js/tinymce/jquery.tinymce.min.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("bundles/ggteamforum/js/global.js") }}"></script>
 </head>
 <body class="container-fluid" style="background-color: #eee">
 <div class="row">
@@ -27,6 +20,13 @@
         {% block content %}{% endblock %}
     </div>
 </div>
+<script type="text/javascript" src="{{ asset("bundles/fosjsrouting/js/router.js") }}"></script>
+<script type="text/javascript" src="{{ path("fos_js_routing_js", {"callback":"fos.Router.setData"}) }}"></script>
+<script type="text/javascript" src="{{ asset("js/jQuery.js") }}"></script>
+<script type="text/javascript" src="{{ asset("js/jQuery-ui.js") }}"></script>
+{{ tinymce_init() }}
+<script type="text/javascript" src="{{ asset("js/jQuery.sortable.js") }}"></script>
+<script type="text/javascript" src="{{ asset("bundles/ggteamforum/js/global.js") }}"></script>
 {% block javascripts %}{% endblock %}
 </body>
 </html>

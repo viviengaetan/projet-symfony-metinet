@@ -34,7 +34,7 @@ class Category
 
     /**
      * @var \String
-     * @ORM\Column(name="description",type="text",nullable=false)
+     * @ORM\Column(name="description",type="text",nullable=true)
      */
     private $description;
 

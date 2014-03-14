@@ -1,10 +1,14 @@
 $(document).ready(function() {
-    $("textarea").tinymce({
-        plugins: [
-            "advlist autolink lists link image charmap print preview anchor",
-            "searchreplace visualblocks code fullscreen",
-            "insertdatetime media table contextmenu paste moxiemanager"
-        ],
-        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
-    });
+
 });
+
+function messageAlert(message, level) {
+    level = typeof level !== undefined ? level : "info";
+    $(".alert-"+level).removeClass("hidden");
+    $(".alert-"+level).text(message);
+    setTimeout(function () {
+        $(".alert-"+level).addClass("hidden");
+        $(".alert-"+level).text("");
+    }, 5000);
+
+}

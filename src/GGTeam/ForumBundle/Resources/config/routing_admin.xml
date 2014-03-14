@@ -21,6 +21,10 @@
     <route id="gg_team_forum_admin_updatecategory" pattern="/updateCategory/{idcategory}">
         <default key="_controller">GGTeamForumBundle:AdminCategory:updateCategory</default>
     </route>
+    <route id="gg_team_forum_admin_removecategory" pattern="/removeCategory/{idcategory}">
+        <default key="_controller">GGTeamForumBundle:AdminCategory:removeCategory</default>
+        <option key="expose">true</option>
+    </route>
 
     <!-- USERS -->
     <route id="gg_team_forum_admin_listeusers" pattern="/listeUsers">

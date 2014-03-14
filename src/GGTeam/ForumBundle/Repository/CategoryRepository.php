@@ -11,7 +11,8 @@ namespace GGTeam\ForumBundle\Repository;
 use Doctrine\ORM\EntityRepository;
 use GGTeam\ForumBundle\Entity\Category;
 
-class CategoryRepository extends EntityRepository{
+class CategoryRepository extends EntityRepository
+{
 
     public function getFirstLevel()
     {
@@ -19,7 +20,7 @@ class CategoryRepository extends EntityRepository{
             ->select("c")
             ->from("GGTeamForumBundle:Category", "c")
             ->where("c.parent IS NULL")
-            ->orderBy("c.order","ASC");
+            ->orderBy("c.order", "ASC");
     }
 
     public function getAllCategory()
@@ -35,50 +36,58 @@ class CategoryRepository extends EntityRepository{
             ->select("c")
             ->from("GGTeamForumBundle:Category", "c")
             ->where("c.parent = :parentId")
-            ->orderBy("c.order","ASC")
+            ->orderBy("c.order", "ASC")
             ->setParameter("parentId", $parentId);
     }
 
-    public function getParentPossible($id) {
+    public function getParentPossible($id)
+    {
         $allDeniedCategories = $this->getAllChild($id);
         $request = $this->_em->createQueryBuilder()
             ->select("c")
             ->from("GGTeamForumBundle:Category", "c")
             ->where("c.id != :id");
-        foreach($allDeniedCategories as $cat) {
-            $request->andWhere("c.id != :id".$cat->getId());
-            $request->setParameter("id".$cat->getId(), $cat->getId());
+        foreach ($allDeniedCategories as $cat) {
+            $request->andWhere("c.id != :id" . $cat->getId());
+            $request->setParameter("id" . $cat->getId(), $cat->getId());
 
         }
         $request
-            ->orderBy("c.order","ASC")
+            ->orderBy("c.order", "ASC")
             ->setParameter("id", $id);
         return $request;
     }
 
-    private function getAllChild($id) {
+    private function getAllChild($id)
+    {
         $categories = $this->getSubCategories($id)->getQuery()->getResult();
         $allCategories = $categories;
-        foreach($categories as $category) {
+        foreach ($categories as $category) {
             $return = $this->getAllChild($category->getId());
-            foreach($return as $cat) {
+            foreach ($return as $cat) {
                 $allCategories[] = $cat;
             }
         }
         return $allCategories;
     }
 
-    public function saveNewCategory(Category $category) {
+    public function saveNewCategory(Category $category)
+    {
         $catmaxorder = $this->_em->createQueryBuilder()
-            ->select("c, MAX(c.order)")
-            ->from("GGTeamForumBundle:Category", "c")
-            ->where("c.parent = :id")
-            ->setParameter("id", $category->getId())
-            ->getQuery()
-            ->getResult();
+            ->select("MAX(c.order)")
+            ->from("GGTeamForumBundle:Category", "c");
+        if ($category->getParent() == null) {
+            $catmaxorder->where("c.parent is null");
+        } else {
+            $catmaxorder->where("c.parent = :parent")
+                ->setParameter("parent", $category->getParent()->getId());
+        }
+        $catmaxorder = $catmaxorder->getQuery()->getResult();
         var_dump($catmaxorder);
-        if(!$catmaxorder[0][0]) { $catmaxorder = 0; }
-        $category->setOrder($catmaxorder+1);
+        if (!$catmaxorder[0][1]) {
+            $catmaxorder = 0;
+        }
+        $category->setOrder($catmaxorder[0][1] + 1);
         $this->_em->persist($category);
         $this->_em->flush();
     }
