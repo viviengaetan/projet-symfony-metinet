@@ -1,0 +1,30 @@
+{% extends "GGTeamForumBundle::Front/templates/base.html.twig" %}
+
+{% block content %}
+    <!-- @TODO SI PROPRIETAIRE OU ADMIN -->
+    <div class="navbar">
+        <a href="" id="button-fiche" class="btn btn-primary btn-lg" role="button">Editer le Forum</a>
+        <a href="" id="button-remove" class="btn btn-danger btn-lg" role="button">Supprimer le Forum</a>
+    </div>
+    <!-- ENDTODO -->
+    <div class="panel panel-primary">
+        <div class="panel-heading">{{ forum.name }}</div>
+        <div class="panel-body">{{ forum.content|raw }}</div>
+    </div>
+    {% for message in forum.messages %}
+        <div class="panel">
+            <div class="col-lg-3 bg-primary" style="min-height: 150px;">
+                <h5>{{ message.author.username }}</h5>
+            </div>
+            <div class="col-lg-9 panel-body panel-primary"
+                 style="border-style: solid; border-width: thin;min-height: 150px;">
+                {{ message.content|raw }}
+            </div>
+        </div>
+    {% endfor %}
+    {{ form(form) }}
+    <div class="navbar">
+        <a href="{{ path("gg_team_forum_addmessage", {idForum:forum.id}) }}" id="button-remove"
+           class="btn btn-primary btn-lg pull-right" role="button">Répondre</a>
+    </div>
+{% endblock %}

@@ -10,6 +10,7 @@ namespace GGTeam\ForumBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use \DateTime;
 
 /**
  * Class Forum

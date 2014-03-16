@@ -1,0 +1,12 @@
+{% extends "GGTeamForumBundle::Front/templates/base.html.twig" %}
+
+
+{% block content %}
+    <ul class="list-group">
+        {% for category in listCategories %}
+            {% include "GGTeamForumBundle:Front/templates:category.template.html.twig" with {'category': category} %}
+        {% else %}
+            <li class="list-group-item">Il n'y a pas de Catégorie.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

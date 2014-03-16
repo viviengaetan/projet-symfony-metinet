@@ -33,7 +33,6 @@ class AdminCategoryController extends Controller
 
     public function addCategoryAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
         $category = new Category();
 
         $form = $this->createFormBuilder($category)
@@ -57,7 +56,6 @@ class AdminCategoryController extends Controller
                 "form" => $form->createView()
             ));
         }
-
     }
 
     public function updateCategoryAction(Request $request, $idcategory)

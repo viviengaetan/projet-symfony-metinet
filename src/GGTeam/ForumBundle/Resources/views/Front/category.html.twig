@@ -1,0 +1,23 @@
+{% extends "GGTeamForumBundle::Front/templates/base.html.twig" %}
+
+{% block content %}
+
+    <h3>Catégorie</h3>
+    <ul class="list-group">
+        {% for category in category.categories %}
+            {% include "GGTeamForumBundle:Front/templates:category.template.html.twig" with {'category': category} %}
+        {% else %}
+            <li class="list-group-item">Il n'y a pas de Sous-Catégorie.</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Forum</h3>
+    <ul class="list-group">
+        {% for forum in category.forums %}
+            {% include "GGTeamForumBundle:Front/templates:forum.template.html.twig" with {'forum': forum} %}
+        {% else %}
+            <li class="list-group-item">Il n'y a pas de Forum.</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ path("gg_team_forum_addforum", {idCategory:category.id}) }}" class="btn btn-primary">Ajouter Un Forum</a>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% if category is defined %}
+    <ol class="breadcrumb">
+        <li><a href="{{ path("gg_team_forum_homepage") }}">Accueil</a></li>
+        {% if category.parent is not null %}
+            {% include "GGTeamForumBundle:Front/templates:recursive.breadcrumb.html.twig" with {'category': category.parent} %}
+        {% endif %}
+        <li class="active">{{ category.name }}</li>
+    </ol>
+{% endif %}

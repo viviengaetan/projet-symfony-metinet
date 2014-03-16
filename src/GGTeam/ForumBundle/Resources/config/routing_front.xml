@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<routes xmlns="http://symfony.com/schema/routing"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+    <route id="gg_team_forum_homepage" pattern="/">
+        <default key="_controller">GGTeamForumBundle:Front:index</default>
+    </route>
+    <route id="gg_team_forum_category" pattern="/category/{idCategory}">
+        <default key="_controller">GGTeamForumBundle:Front:category</default>
+    </route>
+    <route id="gg_team_forum_addforum" pattern="/addForum/{idCategory}">
+        <default key="_controller">GGTeamForumBundle:Front:addForum</default>
+    </route>
+    <route id="gg_team_forum_forum" pattern="/forum/{idForum}">
+        <default key="_controller">GGTeamForumBundle:Front:forum</default>
+    </route>
+    <route id="gg_team_forum_addmessage" pattern="/addMessage/{idForum}">
+        <default key="_controller">GGTeamForumBundle:Front:addMessage</default>
+    </route>
+    <route id="gg_team_forum_listusers" pattern="/users">
+        <default key="_controller">GGTeamForumBundle:Front:users</default>
+    </route>
+</routes>
