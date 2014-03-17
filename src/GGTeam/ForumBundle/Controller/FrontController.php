@@ -61,7 +61,7 @@ class FrontController extends Controller
 
         $message = new Message();
         $message->setAuthor($this->getUser());
-        $message->setForum($em->getRepository("GGTeamForumBundle:Message")->find($idForum));
+        $message->setForum($em->getRepository("GGTeamForumBundle:Forum")->find($idForum));
 
         $form = $this->createFormBuilder($message)
             ->add("content", "textarea", array(
@@ -78,7 +78,7 @@ class FrontController extends Controller
         if ($form->isValid()) {
             $em->persist($message);
             $em->flush();
-            return $this->render($this->generateUrl("gg_team_forum_forum"), array("idForum" => $idForum));
+            return $this->redirect($this->generateUrl("gg_team_forum_forum", array("idForum" => $idForum)));
         }
 
         return $this->render("GGTeamForumBundle:Front:forum.html.twig", array(
@@ -93,7 +93,7 @@ class FrontController extends Controller
         $em = $this->getDoctrine()->getManager();
         $message = new Message();
         $message->setAuthor($this->getUser());
-        $message->setForum($em->getRepository("GGTeamForumBundle:Message")->find($idForum));
+        $message->setForum($em->getRepository("GGTeamForumBundle:Forum")->find($idForum));
 
         $form = $this->createFormBuilder($message)
             ->add("content", "textarea", array(

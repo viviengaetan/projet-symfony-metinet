@@ -9,7 +9,6 @@
 namespace GGTeam\ForumBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Class Message
@@ -71,8 +70,8 @@ class Message
 
     public function __construct()
     {
-        $this->timeCreation = new DateTime();
-        $this->timeLastEdition = new DateTime();
+        $this->timeCreation = new \DateTime();
+        $this->timeLastEdition = new \DateTime();
     }
 
     /****************************************
