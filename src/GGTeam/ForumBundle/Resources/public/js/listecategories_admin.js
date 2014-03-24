@@ -41,10 +41,6 @@ $(document).ready(function () {
         event.preventDefault();
         saveCategories(deleteCategory);
     });
-    $(".category-button").on("dblclick", function(event) {
-        event.preventDefault();
-        window.location = $(this).parent().attr("href");
-    });
 
     $(".category-button").on("click", function(event) {
         event.preventDefault();

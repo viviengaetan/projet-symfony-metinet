@@ -2,10 +2,14 @@
 
 {% block content %}
     <!-- @TODO SI PROPRIETAIRE OU ADMIN -->
-    <div class="navbar">
-        <a href="" id="button-fiche" class="btn btn-primary btn-lg" role="button">Editer le Forum</a>
-        <a href="" id="button-remove" class="btn btn-danger btn-lg" role="button">Supprimer le Forum</a>
-    </div>
+    {% if is_granted('ROLE_USER') %}
+        {% if app.user.id == forum.author.id %}
+            <div class="navbar">
+                <a href="" id="button-fiche" class="btn btn-primary btn-lg" role="button">Editer le Forum</a>
+                <a href="" id="button-remove" class="btn btn-danger btn-lg" role="button">Supprimer le Forum</a>
+            </div>
+        {% endif %}
+    {% endif %}
     <!-- ENDTODO -->
     <div class="panel panel-primary">
         <div class="panel-heading">{{ forum.name }}</div>
@@ -22,9 +26,11 @@
             </div>
         </div>
     {% endfor %}
-    {{ form(form) }}
-    <div class="navbar">
-        <a href="{{ path("gg_team_forum_addmessage", {idForum:forum.id}) }}" id="button-remove"
-           class="btn btn-primary btn-lg pull-right" role="button">Répondre</a>
-    </div>
+    {% if is_granted('ROLE_USER') %}
+        {{ form(form) }}
+        <div class="navbar">
+            <a href="{{ path("gg_team_forum_addmessage", {idForum:forum.id}) }}" id="button-remove"
+               class="btn btn-primary btn-lg pull-right" role="button">Répondre</a>
+        </div>
+    {% endif %}
 {% endblock %}

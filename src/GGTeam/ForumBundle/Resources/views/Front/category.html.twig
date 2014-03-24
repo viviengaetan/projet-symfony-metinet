@@ -19,5 +19,8 @@
             <li class="list-group-item">Il n'y a pas de Forum.</li>
         {% endfor %}
     </ul>
-    <a href="{{ path("gg_team_forum_addforum", {idCategory:category.id}) }}" class="btn btn-primary">Ajouter Un Forum</a>
+    {% if is_granted('ROLE_USER') %}
+        <a href="{{ path("gg_team_forum_addforum", {idCategory:category.id}) }}" class="btn btn-primary">Ajouter Un
+            Forum</a>
+    {% endif %}
 {% endblock %}
