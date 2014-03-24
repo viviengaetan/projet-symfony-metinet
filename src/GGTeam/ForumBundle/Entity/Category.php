@@ -65,6 +65,8 @@ class Category
      */
     private $order;
 
+    private $nbForums;
+
     /****************************************
      * CONSTRUCTORS
      ****************************************/
@@ -191,9 +193,34 @@ class Category
         return $this->order;
     }
 
+    /**
+     * @param mixed $nbForums
+     */
+    public function setNbForums($nbForums)
+    {
+        $this->nbForums = $nbForums;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNbForums()
+    {
+        return $this->nbForums;
+    }
+
 
     /****************************************
      * FUNCTIONS
      ****************************************/
-
+    /**
+     * @return int
+     */
+    public function countForum() {
+        $this->nbForums = count($this->forums);
+        foreach($this->categories as $categorie) {
+            $this->nbForums += $categorie->countForum();
+        }
+        return $this->nbForums;
+    }
 } 
