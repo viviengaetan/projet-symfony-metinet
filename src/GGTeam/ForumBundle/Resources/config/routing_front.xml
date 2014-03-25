@@ -11,13 +11,19 @@
     <route id="gg_team_forum_addforum" pattern="/addForum/{idCategory}">
         <default key="_controller">GGTeamForumBundle:Front:addForum</default>
     </route>
+
     <route id="gg_team_forum_forum" pattern="/forum/{idForum}">
         <default key="_controller">GGTeamForumBundle:Front:forum</default>
     </route>
     <route id="gg_team_forum_addmessage" pattern="/addMessage/{idForum}">
         <default key="_controller">GGTeamForumBundle:Front:addMessage</default>
     </route>
+
     <route id="gg_team_forum_listusers" pattern="/users">
         <default key="_controller">GGTeamForumBundle:Front:users</default>
+    </route>
+
+    <route id="gg_team_forum_login" pattern="/user/login">
+        <default key="_controller">GGTeamForumBundle:User:login</default>
     </route>
 </routes>

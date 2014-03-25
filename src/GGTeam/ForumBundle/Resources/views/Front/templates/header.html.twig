@@ -1,7 +1,7 @@
 <header>
     <div class="row">
         <div class="col-md-4">
-    <h1>MonBundleForum</h1>
+            <h1>MonBundleForum</h1>
         </div>
         <div class="col-md-offset-4 col-md-4">
             {% if is_granted('ROLE_USER') %}
@@ -9,19 +9,17 @@
                 <a href="{{ path("fos_user_security_logout") }}">Déconnexion</a>
             {% else %}
                 {# Call a Route #}
-                {% render url('fos_user_security_login') %}
+                {# render url('fos_user_security_login') #}
+                <a href="{{ path("gg_team_forum_login") }}">Connexion</a>
             {% endif %}
         </div>
     </div>
     <nav class="navbar">
         {% set currentPath = app.request.attributes.get('_route') %}
         <ul class="nav nav-pills nav-tabs nav-justified">
-            <li {% if currentPath == "gg_team_forum_homepage" %}class="active"{% endif %}><a
-                        href="{{ path("gg_team_forum_homepage") }}">Forum</a></li>
-            <li {% if currentPath == "gg_team_forum_listeusers" %}class="active"{% endif %}><a
-                        href="{{ path("gg_team_forum_listusers") }}">Utilisateurs</a></li>
-            <li {% if not is_granted('ROLE_ADMIN') %}class="disabled"{% endif %}><a
-                        href="{{ path("gg_team_forum_admin") }}">Administration</a></li>
+            <li {% if currentPath == "gg_team_forum_homepage" %}class="active"{% endif %}><a href="{{ path("gg_team_forum_homepage") }}">Forum</a></li>
+            <li {% if currentPath == "gg_team_forum_listeusers" %}class="active"{% endif %}><a href="{{ path("gg_team_forum_listusers") }}">Utilisateurs</a></li>
+            <li {% if not is_granted('ROLE_ADMIN') %}class="disabled"{% endif %}><a href="{{ path("gg_team_forum_admin") }}">Administration</a></li>
         </ul>
     </nav>
 </header>

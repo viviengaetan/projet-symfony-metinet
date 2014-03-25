@@ -22,7 +22,6 @@
         {% endfor %}
     </ul>
     {% if is_granted('ROLE_USER') %}
-    <a href="{{ path("gg_team_forum_addforum", {idCategory:category.id}) }}" class="btn btn-primary">Ajouter Un
-        Forum</a>
+    <a href="{{ path("gg_team_forum_addforum", {idCategory:category.id}) }}" class="btn btn-primary">Ajouter Un Forum</a>
     {% endif %}
 {% endblock %}
