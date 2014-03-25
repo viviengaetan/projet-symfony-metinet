@@ -23,7 +23,4 @@
         <default key="_controller">GGTeamForumBundle:Front:users</default>
     </route>
 
-    <route id="gg_team_forum_login" pattern="/user/login">
-        <default key="_controller">GGTeamForumBundle:User:login</default>
-    </route>
 </routes>
