@@ -16,11 +16,10 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new Shorty\FirstBundle\ShortyFirstBundle(),
-            new GGTeam\ForumBundle\GGTeamForumBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
+            new GGTeam\ForumBundle\GGTeamForumBundle(),
             new GGTeam\FrontBundle\GGTeamFrontBundle(),
             new GGTeam\BackBundle\GGTeamBackBundle(),
         );

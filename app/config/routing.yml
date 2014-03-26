@@ -1,18 +1,15 @@
 gg_team_back:
     resource: "@GGTeamBackBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /admin
 
 gg_team_front:
     resource: "@GGTeamFrontBundle/Resources/config/routing.yml"
     prefix:   /
 
+#TODO DELETE
 gg_team_forum:
     resource: "@GGTeamForumBundle/Resources/config/routing.xml"
     prefix:   /
-
-#shorty_first:
-#    resource: "@ShortyFirstBundle/Resources/config/routing.yml"
-#    prefix:   /
 
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
