@@ -1,0 +1,7 @@
+parameters:
+#    gg_team_back.example.class: GGTeam\BackBundle\Example
+
+services:
+#    gg_team_back.example:
+#        class: %gg_team_back.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,3 +1,11 @@
+gg_team_back:
+    resource: "@GGTeamBackBundle/Resources/config/routing.yml"
+    prefix:   /
+
+gg_team_front:
+    resource: "@GGTeamFrontBundle/Resources/config/routing.yml"
+    prefix:   /
+
 gg_team_forum:
     resource: "@GGTeamForumBundle/Resources/config/routing.xml"
     prefix:   /
