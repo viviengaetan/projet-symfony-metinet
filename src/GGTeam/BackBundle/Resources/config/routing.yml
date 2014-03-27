@@ -1,3 +1,11 @@
-gg_team_back_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: GGTeamBackBundle:Default:index }
+gg_team_forum_back_homepage:
+    pattern:  /
+    defaults: { _controller: GGTeamBackBundle:Category:index }
+
+gg_team_forum_back_category:
+    prefix:  /category
+    resource: "@GGTeamBackBundle/Resources/config/routing_category.yml"
+
+gg_team_forum_back_user:
+    prefix:  /user
+    resource: "@GGTeamBackBundle/Resources/config/routing_user.yml"

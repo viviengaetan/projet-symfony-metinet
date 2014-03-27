@@ -1,4 +1,4 @@
-{% extends "GGTeamForumBundle::Front/templates/base.html.twig" %}
+{% extends "GGTeamFrontBundle::Templates/base.html.twig" %}
 
 {% block content %}
     <!-- @TODO SI PROPRIETAIRE OU ADMIN -->
@@ -29,7 +29,7 @@
     {% if is_granted('ROLE_USER') %}
         {{ form(form) }}
         <div class="navbar">
-            <a href="{{ path("gg_team_forum_addmessage", {idForum:forum.id}) }}" id="button-remove" class="btn btn-primary btn-lg pull-right" role="button">Répondre</a>
+            <a href="{{ path("gg_team_forum_front_addmessage", {idForum:forum.id}) }}" id="button-remove" class="btn btn-primary btn-lg pull-right" role="button">Répondre</a>
         </div>
     {% endif %}
 {% endblock %}

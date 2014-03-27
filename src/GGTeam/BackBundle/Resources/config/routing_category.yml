@@ -1,0 +1,19 @@
+gg_team_forum_back_listecategories:
+    pattern:  /liste
+    defaults: { _controller: GGTeamBackBundle:Category:listeCategories }
+
+gg_team_forum_back_savecategories:
+    pattern:  /save
+    defaults: { _controller: GGTeamBackBundle:Category:saveCategories, expose:true }
+
+gg_team_forum_back_addcategory:
+    pattern:  /add
+    defaults: { _controller: GGTeamBackBundle:Category:addCategory }
+
+gg_team_forum_back_updatecategory:
+    pattern:  /update/{idcategory}
+    defaults: { _controller: GGTeamBackBundle:Category:updateCategory }
+
+gg_team_forum_back_removecategory:
+    pattern:  /remove/{idcategory}
+    defaults: { _controller: GGTeamBackBundle:Category:removeCategory, expose:true }

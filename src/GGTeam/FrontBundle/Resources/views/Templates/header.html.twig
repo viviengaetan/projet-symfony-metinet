@@ -17,9 +17,9 @@
     <nav class="navbar">
         {% set currentPath = app.request.attributes.get('_route') %}
         <ul class="nav nav-pills nav-tabs nav-justified">
-            <li {% if currentPath == "gg_team_forum_homepage" or category is not null %}class="active"{% endif %}><a href="{{ path("gg_team_forum_homepage") }}">Forum</a></li>
-            <li {% if currentPath == "gg_team_forum_listeusers" %}class="active"{% endif %}><a href="{{ path("gg_team_forum_listusers") }}">Utilisateurs</a></li>
-            {% if is_granted('ROLE_ADMIN') %}<li><a href="{{ path("gg_team_forum_admin") }}">Administration</a></li>{% endif %}
+            <li {% if currentPath == "gg_team_forum_front_homepage" or category is defined %}class="active"{% endif %}><a href="{{ path("gg_team_forum_front_homepage") }}">Forum</a></li>
+            <li {% if currentPath == "gg_team_forum_front_listusers" %}class="active"{% endif %}><a href="{{ path("gg_team_forum_front_listusers") }}">Utilisateurs</a></li>
+            {% if is_granted('ROLE_ADMIN') %}<li><a href="{{ path("gg_team_forum_back_homepage") }}">Administration</a></li>{% endif %}
         </ul>
     </nav>
 </header>

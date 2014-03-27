@@ -1,4 +1,4 @@
-{% extends "GGTeamForumBundle::Admin/base.html.twig" %}
+{% extends "GGTeamBackBundle:Templates:base.html.twig" %}
 
 {% block javascripts %}
     <script type="text/javascript" src="{{ asset('bundles/ggteamforum/js/listecategories_admin.js') }}"></script>
@@ -6,9 +6,9 @@
 
 {% block content %}
     <div class="navbar">
-        <a href="{{ path("gg_team_forum_admin_savecategories") }}" id="savecategories" class="btn btn-success btn-lg"
+        <a href="{{ path("gg_team_forum_back_savecategories") }}" id="savecategories" class="btn btn-success btn-lg"
            role="button">Sauvegarder les Catégories</a>
-        <a href="{{ path("gg_team_forum_admin_addcategory") }}" class="btn btn-primary btn-lg" role="button">Ajouter une
+        <a href="{{ path("gg_team_forum_back_addcategory") }}" class="btn btn-primary btn-lg" role="button">Ajouter une
             Catégorie</a>
         <a href="" id="button-fiche" class="btn btn-primary btn-lg" disabled="disabled" role="button">Voir la Catégorie</a>
         <a href="" id="button-remove" class="btn btn-danger btn-lg" disabled="disabled" role="button">Supprimer Catégorie</a>
@@ -16,14 +16,14 @@
     <ol class="nested_with_switch">
         {% for category in categories %}
             <li id="{{ category.id }}">
-                <a href="{{ path("gg_team_forum_admin_updatecategory", {idcategory:category.id}) }}">
+                <a href="{{ path("gg_team_forum_back_updatecategory", {idcategory:category.id}) }}">
                     {# <div class="col-md-4 col-md-offset-2 btn btn-default"> #}
                     <div info="{{ category.id }}" class="btn btn-sm btn-default category-button">
                         <h5>{{ category.name }}</h5>
                     </div>
                 </a>
                 <ol>
-                    {% include "GGTeamForumBundle:Admin/Category:listecategories.template.html.twig" with {'categories': category.categories, "lvl": 11} %}
+                    {% include "GGTeamBackBundle:Category:listecategories.template.html.twig" with {'categories': category.categories, "lvl": 11} %}
                 </ol>
             </li>
         {% else %}

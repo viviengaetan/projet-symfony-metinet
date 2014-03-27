@@ -1,0 +1,4 @@
+{% if category.parent is not null %}
+    {% include "GGTeamFrontBundle:Templates:recursive.breadcrumb.html.twig" with {'category': category.parent} %}
+{% endif %}
+<li><a href="{{ path("gg_team_forum_front_category", {idCategory:category.id}) }}">{{ category.name }}</a></li>

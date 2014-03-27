@@ -1,24 +1,24 @@
 <?php
 
-namespace GGTeam\ForumBundle\Controller;
+namespace GGTeam\FrontBundle\Controller;
 
 use GGTeam\ForumBundle\Entity\Forum;
 use GGTeam\ForumBundle\Entity\Message;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class FrontController extends Controller
+class IndexController extends Controller
 {
     public function indexAction()
     {
         $listCategories = $this->get("gg_team_forum.category_manager")->getFirstLevel();
-        return $this->render('GGTeamForumBundle:Front:index.html.twig', array("listCategories" => $listCategories));
+        return $this->render('GGTeamFrontBundle:Default:index.html.twig', array("listCategories" => $listCategories));
     }
 
     public function categoryAction($idCategory)
     {
         $category = $this->getDoctrine()->getManager()->getRepository("GGTeamForumBundle:Category")->find($idCategory);
-        return $this->render('GGTeamForumBundle:Front:category.html.twig', array("category" => $category));
+        return $this->render('GGTeamFrontBundle:Default:category.html.twig', array("category" => $category));
     }
 
     public function addForumAction(Request $request, $idCategory)
@@ -47,7 +47,7 @@ class FrontController extends Controller
             $em->flush();
             return $this->redirect($this->generateUrl("gg_team_forum_category", array("idCategory" => $category->getId())));
         } else {
-            return $this->render("GGTeamForumBundle:Front:addForum.html.twig", array(
+            return $this->render("GGTeamFrontBundle:Default:addForum.html.twig", array(
                 "form" => $form->createView(),
                 "category" => $category
             ));
@@ -81,7 +81,7 @@ class FrontController extends Controller
             return $this->redirect($this->generateUrl("gg_team_forum_forum", array("idForum" => $idForum)));
         }
 
-        return $this->render("GGTeamForumBundle:Front:forum.html.twig", array(
+        return $this->render("GGTeamFrontBundle:Default:forum.html.twig", array(
             "forum" => $forum,
             "category" => $forum->getCategory(),
             "form" => $form->createView()
@@ -112,7 +112,7 @@ class FrontController extends Controller
             $em->flush();
             return $this->render($this->generateUrl("gg_team_forum_forum"), array("idForum" => $idForum));
         }
-        return $this->render("GGTeamForumBundle:Front:addForum.html.twig", array(
+        return $this->render("GGTeamFrontBundle:Default:addForum.html.twig", array(
             "form" => $form->createView()
         ));
 

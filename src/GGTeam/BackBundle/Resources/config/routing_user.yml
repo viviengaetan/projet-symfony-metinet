@@ -1,0 +1,4 @@
+gg_team_forum_back_listeusers:
+    pattern:  /liste
+    defaults: { _controller: GGTeamBackBundle:User:index }
+    defaults: { _controller: GGTeamBackBundle:User:index }

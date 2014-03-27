@@ -1,5 +1,5 @@
 <li class="list-group-item">
     <span class="badge">{{ category.categories|length }} Sous-Catégories</span>
     <span class="badge">{{ category.countForum() }} Forums</span>
-    <a href="{{ path("gg_team_forum_category", {idCategory:category.id}) }}" >{{ category.name }}</a>
+    <a href="{{ path("gg_team_forum_front_category", {idCategory:category.id}) }}" >{{ category.name }}</a>
 </li>

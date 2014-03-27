@@ -6,11 +6,12 @@ gg_team_front:
     resource: "@GGTeamFrontBundle/Resources/config/routing.yml"
     prefix:   /
 
-#TODO DELETE
-gg_team_forum:
-    resource: "@GGTeamForumBundle/Resources/config/routing.xml"
-    prefix:   /
-
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+    prefix:   /
+
+#TODO DELETE
+#gg_team_forum:
+#    resource: "@GGTeamForumBundle/Resources/config/routing.xml"
+#    prefix:   /
 
